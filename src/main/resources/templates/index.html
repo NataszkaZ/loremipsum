@@ -1,0 +1,280 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hyperspace by HTML5 UP</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--[if lte IE 8]>
+    <script th:src="@{/js/ie/html5shiv.js}"></script><![endif]-->
+    <link rel="stylesheet" th:href="@{css/main.css}"/>
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" th:href="@{css/ie9.css}"/><![endif]-->
+    <!--[if lte IE 8]>
+    <link rel="stylesheet" th:href="@{css/ie8.css}"/><![endif]-->
+</head>
+<body>
+
+<!-- Sidebar -->
+<section id="sidebar">
+    <div class="inner">
+        <nav>
+            <ul>
+                <li><a href="#intro">Welcome on Lorem Ipsum Generator WebPage</a></li>
+                <li><a href="#one">Who I am</a></li>
+                <li><a href="#two">What I do here</a></li>
+                <li><a href="#three">Get in touch</a></li>
+            </ul>
+        </nav>
+    </div>
+</section>
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Intro -->
+    <section id="intro" class="wrapper style1 fullscreen fade-up">
+        <div class="inner">
+            <h1>Welcome on Lorem Ipsum Generator WebPage</h1>
+            <p>This is Lorem Ipsum generator created as part of learning programming in Java and Spring.</p>
+            <ul class="actions">
+                <li><a href="https://en.wikipedia.org/wiki/Lorem_ipsum" class="button scrolly">Read more on Wiki</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- One -->
+    <section id="one" class="wrapper style2 spotlights">
+        <section>
+            <a href="#" class="image"><img th:src="@{images/logo.jpg}" alt="" data-position="center center"/></a>
+            <div class="content">
+                <div class="inner">
+                    <h2>About the author</h2>
+                    <p> Natalia Ziajka is a graduate of the Cracow University of Technology. For over 6 years
+                        professionally associated with the area of software quality assurance.<br/>
+                        Careers in the industry started as a tester and continues to improve its skills and extends
+                        experience in this industry.<br/>
+                        Her daily duties are related to the analysis of customer requirements, development of testing
+                        strategies, manual tests, and what is associated with it, including contact with analysts,
+                        developers and business.<br/>
+
+                        In his spare time he develops his skills in automatic testing<br/>
+                        taking courses, reading books in this field and creating your own projects.<br/>
+
+                        He is happy to help beginners to start their adventure with testing and to limit testing events.<br/>
+                    </p>
+                    <ul class="actions">
+                        <li><a href="https://www.linkedin.com/in/natalia-ziajka-22b7073a/" class="button">Find me on
+                            LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <!-- Two -->
+    <section id="two" class="wrapper style3 fade-up">
+        <div class="inner">
+            <h2>What I do here</h2>
+            <p>I present below a short story and the generator itself.</p>
+            <div class="features">
+                <section>
+                    <span class="icon major fa-history"></span>
+                    <h3>History of Lorem Ipsum</h3>
+                    <p>In publishing and graphic design, lorem ipsum is a filler text or greeking commonly used to
+                        demonstrate the textual elements of a graphic document or visual presentation. Replacing
+                        meaningful content with placeholder text allows designers to design the form of the content
+                        before the content itself has been produced.
+                        The lorem ipsum text is typically a scrambled section of De finibus bonorum et malorum, a
+                        1st-century BC Latin text by Cicero, with words altered, added, and removed to make it
+                        nonsensical, improper Latin.
+                        A variation of the ordinary lorem ipsum text has been used in typesetting since the 1960s or
+                        earlier, when it was popularized by advertisements for Letraset transfer sheets. It was
+                        introduced to the Information Age in the mid-1980s by Aldus Corporation, which employed it in
+                        graphics and word-processing templates for its desktop publishing program PageMaker.</p>
+                </section>
+                <section>
+                    <span class="icon major fa-info"></span>
+                    <h3>About this Generator</h3>
+                    <p> With this tool you can generate random text in the form of paragraphs or lists of the selected
+                        length.
+                        For web designers, the option of generating HTML code is very useful.
+                        To generate text, select options and press Generate! The generated text will appear in the text
+                        field, where you can copy it and paste it into your project.</p>
+                </section>
+                <section>
+                    <span class="icon major fa-copy"></span>
+                    <h3>Lorem Ipsum Text Standard</h3>
+                    <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut-->
+                        <!--labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco-->
+                        <!--laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in-->
+                        <!--voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat-->
+                        <!--non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>-->
+                    <p th:text="${randomSentens}">byle co</p>
+                </section>
+
+                <section>
+                    <!--<form id="form1" action="index.php" method="post">-->
+                    <form id="form1" th:action="@{/}" method="post">
+                        <fieldset>
+                            <legend style="margin-left: auto">GENERATOR OPTIONS</legend>
+                            <div style="padding-left: 0.75em;">
+
+                                <div style="float: left; clear: right;">
+                                    <label id="label2" for="ile">Number</label>
+                                    <input class="in" type="text" th:name="ile" id="ile" value="1"
+                                           onchange="updateTyp();"/>
+                                </div>
+
+                                <fieldset id="ftyp">
+
+                                    <div>
+                                        <!--<span class="rbStyled">-->
+                                        <input type="radio" name="typ" id="para" value="1" checked="checked"/></span>
+                                        <label id="para_label" for="para"
+                                               onclick="tRbLabel('rbImg0','','typ','StyledRadiobox0');updateTyp();return false;">Paragraphs</label>
+                                    </div>
+                                    <div>
+                                        <!--<span class="rbStyled">-->
+                                        <input type="radio" name="typ" id="word" value="2"/></span>
+                                        <label for="word" id="word_label"
+                                               onclick="tRbLabel('rbImg1','','typ','StyledRadiobox1');updateTyp();return false;">Words</label>
+                                    </div>
+
+                                    <div>
+                                        <!--<span class="rbStyled">-->
+                                        <input type="radio" name="typ" id="sentence" value="2"/></span>
+                                        <label for="sentence" id="list_label"
+                                               onclick="tRbLabel('rbImg1','','typ','StyledRadiobox1');updateTyp();return false;">Sentence</label>
+                                    </div>
+
+                                </fieldset>
+
+                                <fieldset id="fdlugosc">
+                                    <label style="text-indent: 0;">Length</label>
+                                    <div>
+                                        <span class="rbStyled"><input type="radio" name="dlugosc" id="stala"
+                                                                      checked="checked" value="1"/></span>
+                                        <label for="stala" id="label_stala"
+                                               <!--onclick="tRbLabel('rbImg2','','dlugosc','StyledRadiobox2');return false;"-->
+                                        >Constant</label>
+
+                                        <div id="st">
+                                            <label for="slow" id="label_od">The exact number of words</label>
+                                            <input class="in" type="text" name="slow" id="slow" value="180"/>
+                                            <label id="slst" for="slow">Words</label>
+                                        </div>
+
+                                    </div>
+                                    <div>
+                                        <span class="rbStyled"><input type="radio" name="dlugosc" id="zmienna"
+                                                                      value="2"/></span>
+                                        <label for="zmienna"
+                                               <!--onclick="tRbLabel('rbImg3','','dlugosc','StyledRadiobox3');return false;"-->
+                                               id="label_zmienna">Variable</label>
+
+                                        <div id="zm">
+                                            <label for="od">From</label>
+                                            <input class="in" type="text" name="od" id="od" value="100"/>
+
+                                            <label for="do">To</label>
+                                            <input class="in" type="text" name="do" id="do" value="150"/>
+                                            <label id="slzm" for="do">Words</label>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <div>
+                                    <input type="submit" name="submit" id="submit" value="Generate"/>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </section>
+            </div>
+        </div>
+    </section>
+
+    <!-- Three -->
+    <section id="three" class="wrapper style1 fade-up">
+        <div class="inner">
+            <h2>Get in touch</h2>
+            <p>If you have any questions about the generator, please use the form below.</p>
+            <div class="split style1">
+                <section>
+                    <form method="post" action="#">
+                        <div class="field half first">
+                            <label for="name">Name</label>
+                            <input type="text" name="name" id="name"/>
+                        </div>
+                        <div class="field half">
+                            <label for="email">Email</label>
+                            <input type="text" name="email" id="email"/>
+                        </div>
+                        <div class="field">
+                            <label for="message">Message</label>
+                            <textarea name="message" id="message" rows="5"></textarea>
+                        </div>
+                        <ul class="actions">
+                            <li><a href="" class="button submit">Send Message</a></li>
+                        </ul>
+                    </form>
+                </section>
+                <section>
+                    <ul class="contact">
+                        <li>
+                            <h3>Address</h3>
+                            <span>Kraków, Poland<br/></span>
+                        </li>
+                        <li>
+                            <h3>Email</h3>
+                            <span>nataliaziajka@gmail.com</span>
+                        </li>
+                        <li>
+                            <h3>Mobile Phone</h3>
+                            <span>+ 48 668646624</span>
+                        </li>
+                        <li>
+                            <h3>Social</h3>
+                            <ul class="icons">
+                                <li><a href="https://github.com/nataliaziajka" class="fa-github"><span class="label">GitHub</span></a>
+                                </li>
+                                <li><a href="https://www.linkedin.com/in/natalia-ziajka-22b7073a/"
+                                       class="fa-linkedin"><span class="label">LinkedIn</span></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<!-- Footer -->
+<footer id="footer" class="wrapper style1-alt">
+    <div class="inner">
+        <ul class="menu">
+            <h4>Designed by Natalia Ziajka</h4>
+            <h5>© 2018</h5>
+        </ul>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<script th:src="@{/js/jquery.min.js}"></script>
+<script th:src="@{/js/jquery.scrollex.min.js}"></script>
+<script th:src="@{/js/jquery.scrolly.min.js}"></script>
+<script th:src="@{/js/skel.min.js}"></script>
+<script th:src="@{/js/util.js}"></script>
+<!--[if lte IE 8]>
+<script th:src="@{/js/ie/respond.min.js}"></script><![endif]-->
+<script th:src="@{/js/main.js}"></script>
+
+</body>
+</html>
