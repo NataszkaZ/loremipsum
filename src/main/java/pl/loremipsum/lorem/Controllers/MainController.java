@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import pl.loremipsum.lorem.Models.GeneratorOptions;
 import pl.loremipsum.lorem.Models.LoremIpsumModel;
 
 @Controller
@@ -13,6 +14,16 @@ public class MainController {
 
         @GetMapping("/")
         public String indexGet(Model model) {
+            // 2. dodanie klasy modelu opcji pod nazwa generatorOptions  (dostepne w index.html jako ${generatorOptions. }
+            model.addAttribute("generatorOptions", new GeneratorOptions());
+            model.addAttribute("loremIpsumModel", new LoremIpsumModel());
+
+            return "index";
+        }
+
+        // 3. handler zapisu opcji lub przekierowanie na strone z wynikiem
+        @PostMapping("/saveOptions")
+        public String saveOptions(@ModelAttribute GeneratorOptions generatorOptions) {
             return "index";
         }
 
