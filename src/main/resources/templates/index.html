@@ -9,7 +9,22 @@
 <head>
     <title>Hyperspace by HTML5 UP</title>
     <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1"/>-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!--Bootstrap-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+
     <!--[if lte IE 8]>
     <script th:src="@{/js/ie/html5shiv.js}"></script><![endif]-->
     <link rel="stylesheet" th:href="@{css/main.css}"/>
@@ -112,89 +127,105 @@
                     <span class="icon major fa-copy"></span>
                     <h3>Lorem Ipsum Text Standard</h3>
                     <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut-->
-                        <!--labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco-->
-                        <!--laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in-->
-                        <!--voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat-->
-                        <!--non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>-->
+                    <!--labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco-->
+                    <!--laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in-->
+                    <!--voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat-->
+                    <!--non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>-->
                     <p th:text="${randomSentens}">byle co</p>
+                    <!--Co tu ma byc? tutaj przekazuje to co wygeneruje, tylko taka zmienna nie istnieje :P-->
                 </section>
 
                 <section>
-                    <!--<form id="form1" action="index.php" method="post">-->
-                    <form id="form1" th:action="@{/}" method="post">
-                        <fieldset>
-                            <legend style="margin-left: auto">GENERATOR OPTIONS</legend>
-                            <div style="padding-left: 0.75em;">
+                    <div class="container-fluid">
+                        <!--<form id="form1" action="index.php" method="post">-->
+                        <form id="form1" th:action="@{/}" method="post">
+                            <fieldset>
+                                <legend style="margin-left: auto; font-size: large">GENERATOR OPTIONS</legend>
+                                <div style="padding-left: 0.75em;">
 
-                                <div style="float: left; clear: right;">
-                                    <label id="label2" for="ile">Number</label>
-                                    <input class="in" type="text" th:name="ile" id="ile" value="1"
-                                           onchange="updateTyp();"/>
-                                </div>
+                                    <hr>
 
-                                <fieldset id="ftyp">
-
-                                    <div>
-                                        <!--<span class="rbStyled">-->
-                                        <input type="radio" name="typ" id="para" value="1" checked="checked"/></span>
-                                        <label id="para_label" for="para"
-                                               onclick="tRbLabel('rbImg0','','typ','StyledRadiobox0');updateTyp();return false;">Paragraphs</label>
-                                    </div>
-                                    <div>
-                                        <!--<span class="rbStyled">-->
-                                        <input type="radio" name="typ" id="word" value="2"/></span>
-                                        <label for="word" id="word_label"
-                                               onclick="tRbLabel('rbImg1','','typ','StyledRadiobox1');updateTyp();return false;">Words</label>
+                                    <div style="float: left; clear: right;">
+                                        <label id="label2" for="ile">Number</label>
+                                        <input class="in" type="text" th:name="ile" id="ile" value="1"
+                                               onchange="updateTyp();"/>
                                     </div>
 
-                                    <div>
-                                        <!--<span class="rbStyled">-->
-                                        <input type="radio" name="typ" id="sentence" value="2"/></span>
-                                        <label for="sentence" id="list_label"
-                                               onclick="tRbLabel('rbImg1','','typ','StyledRadiobox1');updateTyp();return false;">Sentence</label>
-                                    </div>
+                                    <fieldset id="ftyp">
+                                        <div>
+                                            <div>
+                                                <!--<span class="rbStyled">-->
+                                                <input type="radio" name="typ" id="para" value="1"/><!--</span>-->
+                                                <label id="para_label" for="para">Paragraphs</label>
+                                            </div>
+                                            <div>
+                                                <!--<span class="rbStyled">-->
+                                                <input type="radio" name="typ" id="word" value="2"/><!--</span>-->
+                                                <label for="word" id="word_label">Words</label>
+                                            </div>
+                                            <div>
+                                                <!--<span class="rbStyled">-->
+                                                <input type="radio" name="typ" id="sentence" value="3"/><!--</span>-->
+                                                <label for="sentence" id="list_label">Sentence</label>
+                                            </div>
+                                        </div>
+                                    </fieldset>
 
-                                </fieldset>
+                                    <fieldset id="fdlugosc">
 
-                                <fieldset id="fdlugosc">
-                                    <label style="text-indent: 0;">Length</label>
-                                    <div>
-                                        <span class="rbStyled"><input type="radio" name="dlugosc" id="stala"
-                                                                      checked="checked" value="1"/></span>
-                                        <label for="stala" id="label_stala"
-                                               <!--onclick="tRbLabel('rbImg2','','dlugosc','StyledRadiobox2');return false;"-->
-                                        >Constant</label>
+                                        <!--<label style="text-indent: 0;">Length</label>-->
+                                        <label>Length</label>
+                                        <div>
+                                        <span class="rbStyled">
+                                            <input for="label_stala" type="radio" name="dlugosc" id="stala"
+                                                   checked="checked" value="1"/></span>
+                                            <h2-garamond for="stala" id="label_stala">
+                                                <!--onclick="tRbLabel('rbImg2','','dlugosc','StyledRadiobox2');return false;"-->
+                                                CONSTANT
+                                            </h2-garamond>
 
-                                        <div id="st">
-                                            <label for="slow" id="label_od">The exact number of words</label>
-                                            <input class="in" type="text" name="slow" id="slow" value="180"/>
-                                            <label id="slst" for="slow">Words</label>
+                                            <form class="form-inline">
+                                                <div id="st" class="form-group">
+                                                    <label class="control-label" for="slow" id="label_od">The exact
+                                                        number of words</label>
+                                                    <input class="form-control in" id="slow" value="180"/>
+                                                </div>
+                                            </form>
                                         </div>
 
-                                    </div>
-                                    <div>
-                                        <span class="rbStyled"><input type="radio" name="dlugosc" id="zmienna"
+                                        <span class="rbStyled"><input type="radio" for="label_zmienna" name="dlugosc"
+                                                                      id="zmienna"
                                                                       value="2"/></span>
-                                        <label for="zmienna"
-                                               <!--onclick="tRbLabel('rbImg3','','dlugosc','StyledRadiobox3');return false;"-->
-                                               id="label_zmienna">Variable</label>
+                                        <h2-garamond for="zmienna" id="label_zmienna">
+                                            <!--onclick="tRbLabel('rbImg3','','dlugosc','StyledRadiobox3');return false;"-->
+                                            VARIABLE
+                                        </h2-garamond>
 
                                         <div id="zm">
-                                            <label for="od">From</label>
-                                            <input class="in" type="text" name="od" id="od" value="100"/>
-
-                                            <label for="do">To</label>
-                                            <input class="in" type="text" name="do" id="do" value="150"/>
-                                            <label id="slzm" for="do">Words</label>
+                                            <form class="form-inline">
+                                                <div class="form-group">
+                                                    <label class="control-label" for="od">From</label>
+                                                    <input class="form-control in" id="od" value="100"/>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label" for="do">To</label>
+                                                    <input class="form-control in" id="do" value="150"/>
+                                                </div>
+                                                <!--<div class="col-xs-12">
+                                                    <label id="slzm" for="do">Words</label>
+                                                </div>-->
+                                                <div>
+                                                    <button type="submit" id="submit" class="btn btn-default">Generate
+                                                    </button>
+                                                    <!--<input type="submit" name="submit" id="submit" value="Generate"/>-->
+                                                </div>
+                                            </form>
                                         </div>
-                                    </div>
-                                </fieldset>
-                                <div>
-                                    <input type="submit" name="submit" id="submit" value="Generate"/>
+                                    </fieldset>
                                 </div>
-                            </div>
-                        </fieldset>
-                    </form>
+                            </fieldset>
+                        </form>
+                    </div>
                 </section>
             </div>
         </div>
@@ -242,7 +273,8 @@
                         <li>
                             <h3>Social</h3>
                             <ul class="icons">
-                                <li><a href="https://github.com/nataliaziajka" class="fa-github"><span class="label">GitHub</span></a>
+                                <li><a href="https://github.com/nataliaziajka" class="fa-github"><span
+                                        class="label">GitHub</span></a>
                                 </li>
                                 <li><a href="https://www.linkedin.com/in/natalia-ziajka-22b7073a/"
                                        class="fa-linkedin"><span class="label">LinkedIn</span></a></li>
