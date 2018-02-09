@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<section>
+    <h3>Result:</h3>
+    <p th:text="'Od: ' + ${generatorOptions.start}"></p>
+    <p th:text="'Do: ' + ${generatorOptions.stop}"></p>
+    <p th:text="'Dlugosc: ' + ${resultFromModel}"></p>
+</section>
+
+
+</body>
+</html>

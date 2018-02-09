@@ -249,6 +249,16 @@
                     <p th:text="'Od: ' + ${generatorOptions.start}"></p>
                     <p th:text="'Do: ' + ${generatorOptions.stop}"></p>
                 </section>
+
+                <section>
+                    <h3>Select Settings (with model)</h3>
+                    <form action="#" th:action="@{/calculate}" th:object="${generatorOptions}" method="post">
+                        <p>Start: <input type="text" th:field="*{start}" /></p>
+                        <p>Stop: <input type="text" th:field="*{stop}" /></p>
+                        <p><input type="submit" value="Calculate" /> <input type="reset" value="Reset" /></p>
+                    </form>
+                </section>
+
             </div>
         </div>
     </section>
