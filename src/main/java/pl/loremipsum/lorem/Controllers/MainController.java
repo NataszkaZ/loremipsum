@@ -1,22 +1,45 @@
 package pl.loremipsum.lorem.Controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import pl.loremipsum.lorem.Models.GeneratorOptions;
 import pl.loremipsum.lorem.Models.LoremIpsumModel;
+import pl.loremipsum.lorem.Services.LoremService;
 
 @Controller
 public class MainController {
 
+        @Autowired
+        LoremService loremService;
+
         @GetMapping("/")
         public String indexGet(Model model) {
+            // 2. dodanie klasy modelu opcji pod nazwa generatorOptions  (dostepne w index.html jako ${generatorOptions. }
+            model.addAttribute("generatorOptions", new GeneratorOptions());
+            model.addAttribute("loremIpsumModel", new LoremIpsumModel());
+
             return "index";
         }
 
-        @PostMapping("/")
+        // 3. handler zapisu opcji lub przekierowanie na strone z wynikiem
+        @PostMapping("/saveOptions")
+        public String saveOptions(@ModelAttribute GeneratorOptions generatorOptions) {
+            return "index";
+        }
+
+        // 3. rzekierowanie na strone z wynikiem
+        @PostMapping("/calculate")
+        public String calculate(Model model, @ModelAttribute GeneratorOptions generatorOptions) {
+            model.addAttribute("resultFromModel", loremService.generate(generatorOptions.getStart(), generatorOptions.getStop()));
+            return "calculate";
+        }
+
+    @PostMapping("/")
         public String indexPost(@RequestParam("ile")String ile, Model model){
             LoremIpsumModel loremIpsumModel = new LoremIpsumModel();
 
