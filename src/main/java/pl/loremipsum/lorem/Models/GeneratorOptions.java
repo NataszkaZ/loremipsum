@@ -1,33 +1,59 @@
 package pl.loremipsum.lorem.Models;
 
-// 1. klasa modelu opcji - potrzebne gettery i settery
 public class GeneratorOptions {
-    private int ile = 7;
-    private int start;
-    private int stop;
 
+    private int amount = 1;
+    private int constantValue;
+    private int typ = 1;
+    private int from;
+    private int to;
 
-    public int getIle() {
-        return ile;
+    public int getTyp() {
+        return typ;
     }
 
-    public void setIle(int ile) {
-        this.ile = ile;
+    public void setTyp(int typ) {
+        this.typ = typ;
     }
 
-    public int getStart() {
-        return start;
+    public int getAmount() {
+
+        return amount;
     }
 
-    public void setStart(int start) {
-        this.start = start;
+    public int getContantValue() {
+
+        return constantValue;
     }
 
-    public int getStop() {
-        return stop;
+    public void setContantValue(int contantValue) {
+
+        this.constantValue = contantValue;
     }
 
-    public void setStop(int stop) {
-        this.stop = stop;
+    public void setAmount(int amount) {
+
+        this.amount = amount;
+    }
+
+
+    public int getFrom() {
+
+        return from;
+    }
+
+    public void setFrom(int from) {
+
+        this.from = from;
+    }
+
+    public int getTo() {
+
+        return to;
+    }
+
+    public void setTo(int to) {
+
+        this.to = to;
     }
 }

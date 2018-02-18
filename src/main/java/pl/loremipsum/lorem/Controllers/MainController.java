@@ -14,51 +14,33 @@ import pl.loremipsum.lorem.Services.LoremService;
 @Controller
 public class MainController {
 
-        @Autowired
-        LoremService loremService;
+    @Autowired
+    LoremService loremService;
 
-        @GetMapping("/")
-        public String indexGet(Model model) {
-            // 2. dodanie klasy modelu opcji pod nazwa generatorOptions  (dostepne w index.html jako ${generatorOptions. }
-            model.addAttribute("generatorOptions", new GeneratorOptions());
-            model.addAttribute("loremIpsumModel", new LoremIpsumModel());
+    @GetMapping("/")
+    public String indexGet(Model model) {
+        model.addAttribute("generatorOptions", new GeneratorOptions());
+        model.addAttribute("loremIpsumModel", new LoremIpsumModel());
+        return "index";
+    }
 
-            return "index";
-        }
-
-        // 3. handler zapisu opcji lub przekierowanie na strone z wynikiem
-        @PostMapping("/saveOptions")
-        public String saveOptions(@ModelAttribute GeneratorOptions generatorOptions) {
-            return "index";
-        }
-
-        // 3. rzekierowanie na strone z wynikiem
-        @PostMapping("/calculate")
-        public String calculate(Model model, @ModelAttribute GeneratorOptions generatorOptions) {
-            model.addAttribute("resultFromModel", loremService.generate(generatorOptions.getStart(), generatorOptions.getStop()));
-            return "calculate";
-        }
+    @PostMapping("/saveOptions")
+    public String saveOptions(@ModelAttribute GeneratorOptions generatorOptions, Model model) {
+        LoremIpsumModel loremIpsumModel = new LoremIpsumModel();
+        String generatedSentense =loremIpsumModel.sentences(generatorOptions.getAmount());
+        model.addAttribute("randomSentens", generatedSentense);
+        System.out.println(generatorOptions.getAmount());
+        System.out.println(generatedSentense);
+        return "index";
+    }
 
     @PostMapping("/")
-        public String indexPost(@RequestParam("ile")String ile, Model model){
-            LoremIpsumModel loremIpsumModel = new LoremIpsumModel();
-
-            model.addAttribute("randomSentens",loremIpsumModel.sentences(Integer.parseInt(ile)));
-            return "index";
-        }
-
-
-//        public String loremPost(@ModelAttribute("loremIpsumModel") LoremIpsumModel loremIpsumModel, Model model) {
-//
-//            model.addAttribute("possibleInstallments", loremIpsumModel.calculatePossibleInstallments());
-//            model.addAttribute("income", loremIpsumModel.getIncome());
-//            model.addAttribute("amount", loremIpsumModel.getAmount());
-//
-//            model.addAttribute("requestedInstallments", loremIpsumModel.getNumberOfInstallments());
-//
-//            return "index";
-//
-//        }
-
+    public String indexPost(@RequestParam("typ") String typ, Model model) {
+        LoremIpsumModel loremIpsumModel = new LoremIpsumModel();
+        model.addAttribute("randomSentens", loremIpsumModel.sentences(Integer.parseInt(typ)));
+        model.addAttribute("randomSentens", loremIpsumModel.paragraphs(Integer.parseInt(typ)));
+        model.addAttribute("randomSentens", loremIpsumModel.words(Integer.parseInt(typ)));
+        return "index";
     }
+}
 

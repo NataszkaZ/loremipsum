@@ -125,99 +125,79 @@
                 </section>
                 <section>
                     <span class="icon major fa-copy"></span>
-                    <h3>Lorem Ipsum Text Standard</h3>
-                    <!--<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut-->
-                    <!--labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco-->
-                    <!--laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in-->
-                    <!--voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat-->
-                    <!--non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>-->
-                    <p th:text="${randomSentens}">byle co</p>
-                    <!--Co tu ma byc? tutaj przekazuje to co wygeneruje, tylko taka zmienna nie istnieje :P-->
+                    <h3>Your generated text lorem ipsum</h3>
+                    <p th:text="${randomSentens}">Generated text</p>
                 </section>
 
                 <section>
                     <div class="container-fluid">
-                        <!--<form id="form1" action="index.php" method="post">-->
-                        <form id="form1" th:action="@{/}" method="post">
+                            <form id="form1" th:action="@{/saveOptions}" th:object="${generatorOptions}" method="post">
                             <fieldset>
                                 <legend style="margin-left: auto; font-size: large">GENERATOR OPTIONS</legend>
+
                                 <div style="padding-left: 0.75em;">
 
                                     <hr>
 
                                     <div style="float: left; clear: right;">
-                                        <label id="label2" for="ile">Number</label>
-                                        <input class="in" type="text" th:name="ile" id="ile" value="1"
+                                        <label id="number_label" for="ile">Number</label>
+                                        <input class="in" type="text" th:name="${amount}" id="ile" value="1"
                                                onchange="updateTyp();"/>
                                     </div>
 
                                     <fieldset id="ftyp">
                                         <div>
                                             <div>
-                                                <!--<span class="rbStyled">-->
-                                                <input type="radio" name="typ" id="para" value="1"/><!--</span>-->
-                                                <label id="para_label" for="para">Paragraphs</label>
+                                                <input type="radio" th:name="${typ}" id="para" value="1"/>
+                                                <label id="para_label" for="para">Paragraph</label>
                                             </div>
                                             <div>
-                                                <!--<span class="rbStyled">-->
-                                                <input type="radio" name="typ" id="word" value="2"/><!--</span>-->
+                                                <input type="radio" th:name="@{typ}" id="word" value="2"/>
                                                 <label for="word" id="word_label">Words</label>
                                             </div>
                                             <div>
-                                                <!--<span class="rbStyled">-->
-                                                <input type="radio" name="typ" id="sentence" value="3"/><!--</span>-->
-                                                <label for="sentence" id="list_label">Sentence</label>
+                                                <input type="radio" th:name="@{typ}" id="sentence" value="3"/>
+                                                <label for="sentence" id="sentence_label">Sentence</label>
                                             </div>
                                         </div>
                                     </fieldset>
 
                                     <fieldset id="fdlugosc">
-
-                                        <!--<label style="text-indent: 0;">Length</label>-->
                                         <label>Length</label>
                                         <div>
                                             <form class="form-inline">
                                             <input  type="radio" name="dlugosc" id="stala"
-                                                   checked="checked" value="1"/></span>
+                                                   value="1"/></span>
                                             <label for="stala" id="label_stala">
-                                                <h2-garamond>
-                                                <!--onclick="tRbLabel('rbImg2','','dlugosc','StyledRadiobox2');return false;"-->
-                                                CONSTANT  </h2-garamond>
+                                                <h2-garamond>CONSTANT</h2-garamond>
                                             </label>
-
 
                                                 <div id="st" class="form-group">
                                                     <label class="control-label" for="slow" id="label_od">The exact
                                                         number of words</label>
-                                                    <input class="form-control in" id="slow" value="180"/>
+                                                    <input class="form-control in" id="slow" th:name="${constantValue}" value="180"/>
                                                 </div>
                                             </form>
                                         </div>
 
                                        <input type="radio"  name="dlugosc" id="zmienna" value="2"/>
                                        <label for="zmienna"id="label_zmienna">
-                                           <h2-garamond  >
-                                            <!--onclick="tRbLabel('rbImg3','','dlugosc','StyledRadiobox3');return false;"-->
-                                            VARIABLE </h2-garamond> \
+                                           <h2-garamond>VARIABLE</h2-garamond>
                                        </label>
 
                                         <div id="zm">
                                             <form class="form-inline">
                                                 <div class="form-group">
                                                     <label class="control-label" for="od">From</label>
-                                                    <input class="form-control in" id="od" value="100"/>
+                                                    <input class="form-control in" id="od" th:name="${from}" value="100"/>
                                                 </div>
                                                 <div class="form-group">
                                                     <label class="control-label" for="do">To</label>
-                                                    <input class="form-control in" id="do" value="150"/>
+                                                    <input class="form-control in" id="do" th:name="${to}" value="150"/>
                                                 </div>
-                                                <!--<div class="col-xs-12">
-                                                    <label id="slzm" for="do">Words</label>
-                                                </div>-->
                                                 <div>
                                                     <button type="submit" id="submit" class="btn btn-default">Generate
                                                     </button>
-                                                    <!--<input type="submit" name="submit" id="submit" value="Generate"/>-->
                                                 </div>
                                             </form>
                                         </div>
@@ -236,30 +216,31 @@
                 https://spring.io/guides/gs/handling-form-submission/
                 -->
 
-                <section>
-                    <h3>Select Settings</h3>
-                    <form action="#" th:action="@{/saveOptions}" th:object="${generatorOptions}" method="post">
-                        <p>Start: <input type="text" th:field="*{start}" /></p>
-                        <p>Stop: <input type="text" th:field="*{stop}" /></p>
-                        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-                    </form>
+                <!--<section>-->
+                    <!--<h3>Select Settings</h3>-->
+                    <!--<form action="#" th:action="@{/saveOptions}" th:object="${generatorOptions}" method="post">-->
+                        <!--<p>Start: <input type="text" th:field="*{start}" /></p>-->
+                        <!--<p>Stop: <input type="text" th:field="*{stop}" /></p>-->
+                        <!--<p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>-->
+                    <!--</form>-->
 
-                    <h3>Current settings:</h3>
-                    <p th:text="'Ile: ' + ${generatorOptions.ile}"></p>
-                    <p th:text="'Od: ' + ${generatorOptions.start}"></p>
-                    <p th:text="'Do: ' + ${generatorOptions.stop}"></p>
-                </section>
+                    <!--<h3>Current settings:</h3>-->
+                    <!--<p th:text="'Ile: ' + ${generatorOptions.ile}"></p>-->
+                    <!--<p th:text="'Od: ' + ${generatorOptions.start}"></p>-->
+                    <!--<p th:text="'Do: ' + ${generatorOptions.stop}"></p>-->
+                <!--</section>-->
 
-                <section>
-                    <h3>Select Settings (with model)</h3>
-                    <form action="#" th:action="@{/calculate}" th:object="${generatorOptions}" method="post">
-                        <p>Start: <input type="text" th:field="*{start}" /></p>
-                        <p>Stop: <input type="text" th:field="*{stop}" /></p>
-                        <p><input type="submit" value="Calculate" /> <input type="reset" value="Reset" /></p>
-                    </form>
-                </section>
+                <!--<section>-->
+                    <!--<h3>Select Settings (with model)</h3>-->
+                    <!--<form action="#" th:action="@{/calculate}" th:object="${generatorOptions}" method="post">-->
+                        <!--<p>Start: <input type="text" th:field="*{start}" /></p>-->
+                        <!--<p>Stop: <input type="text" th:field="*{stop}" /></p>-->
+                        <!--<p><input type="submit" value="Calculate" /> <input type="reset" value="Reset" /></p>-->
+                    <!--</form>-->
+                <!--</section>-->
 
             </div>
+
         </div>
     </section>
 
